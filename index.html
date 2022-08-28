@@ -1,0 +1,57 @@
+<!doctype html><html lang=en>
+<head>
+<meta name=generator content="Hugo 0.91.2">
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap" rel=stylesheet>
+<style>.title{font-family:yuji boku,serif}</style>
+<script src=https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js></script>
+<script src=https://cdn.jsdelivr.net/npm/vue@2></script>
+<script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
+<title>
+SHUNKI
+</title>
+</head>
+<body>
+<div id=app class="w-full h-screen overflow-y-scroll flex flex-col justify-start items-center bg-gradient-to-br from-stone-200 to-neutral-300 text-zinc-800">
+<header class="shrink-0 w-full h-1/2 flex flex-col justify-center items-center bg-gradient-to-br from-stone-700 to-neutral-800 text-white">
+<h1 class="title mb-4 text-4xl">
+<a href=http://example.org/>SHUNKI</a>
+</h1>
+<label class="flex flex-row justify-center items-center">
+<input class="form-input rounded bg-gradient-to-br from-stone-200 to-neutral-300 text-zinc-800" type=search v-model=q @keyup.enter=searchWithQ>
+<button @click=searchWithQ class=ml-2>検索</button>
+</label>
+</header>
+<main class="container mx-auto my-8">
+<h2 class="p-3 border-b border-zinc-800 m-3 text-2xl"><span v-text=searchedQ></span> 記事</h2>
+<div class="flex flex-wrap flex-row justify-center items-center">
+<a :href=post.permalink v-for="post of posts">
+<article class="shadow w-72 h-48 p-2 m-2 border rounded border-zinc-800">
+<h3 class="text-center text-xl border-b border-zinc-800" v-text=post.title></h3>
+<p class="text-sm p-2" v-text=post.summary></p>
+<div class="flex flex-wrap justify-end text-sm text-right text-zinc-500">
+<div class="flex flex-wrap justify-end">
+<p class=m-1 v-for="tag of post.tags" v-text=tag></p>
+</div>
+<p class=m-1 v-text="( new Date(post.date).toLocaleDateString() )"></p>
+</div>
+</div>
+</article>
+</a>
+</div>
+</main>
+<footer class="w-full shrink-0 h-1/4 flex flex-col justify-center items-center bg-gradient-to-br from-stone-700 to-neutral-800 text-white">
+<address class="p-8 pb-2">&copy; mi.ki.ri.hassha.p@gmail.com</address>
+<p class="p-8 pt-2">
+<a href=http://example.org/index.xml> RSS </a>
+</p>
+</footer>
+</div>
+<script>const fuseOptions={shouldSort:!0,includeMatches:!0,tokenize:!0,threshold:0,location:0,distance:100,maxPatternLength:32,minMatchCharLength:1,keys:[{name:"title",weight:.8},{name:"contents",weight:.5},{name:"tags",weight:.3}]},app=new Vue({el:"#app",data:{fuse:null,posts:[],q:"",searchedQ:"",allPosts:[]},methods:{async searchWithQ(){if(this.searchedQ=this.q,console.log(this.q),this.q.length>0){const a=this.searchF(this.q.split(" "));console.log(a),this.posts.splice(0);for(post of a)this.posts.push(post.item);console.log(this.posts)}else this.posts.splice(0),this.posts=this.allPosts.concat(),console.log("posts",this.posts,this.allPosts)},searchF(b){const a=[];for(word of b)for(result of this.fuse.search(word))a.push(result);return a.sort((a,b)=>new Date(b.item.date).getTime()-new Date(a.item.date).getTime()),a}},mounted:async function(){this.allPosts=(await axios.get("/index.json")).data,this.posts=this.allPosts.concat(),this.fuse=new Fuse((await axios.get("/index.json")).data,fuseOptions)}})</script>
+</body>
+</html>

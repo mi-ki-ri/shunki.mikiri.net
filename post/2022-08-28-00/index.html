@@ -1,0 +1,55 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap" rel=stylesheet>
+<style>.title{font-family:yuji boku,serif}</style>
+<script src=https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js></script>
+<script src=https://cdn.jsdelivr.net/npm/vue@2></script>
+<script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
+<title>
+つかいかた &mdash; SHUNKI
+</title>
+</head>
+<body>
+<div id=app class="w-full h-screen overflow-y-scroll flex flex-col justify-start items-center bg-gradient-to-br from-stone-200 to-neutral-300 text-zinc-800">
+<header class="shrink-0 w-full h-1/4 flex flex-col justify-center items-center bg-gradient-to-br from-stone-700 to-neutral-800 text-white">
+<h1 class=title>
+<a href=http://example.org/>SHUNKI</a>
+</h1>
+</header>
+<main class="container mx-auto my-8">
+<article class="min-h-[24rem] p-3 m-3 border rounded border-zinc-800">
+<h2 class="p-3 m-3 border-b border-zinc-800 text-2xl text-center">
+つかいかた 記事
+</h2>
+<div class="p-3 m-3"><p>このサイトはブログでありながら検索中心の使い方で考えています。</p>
+<p>最初、画面には <strong>すべての記事</strong> の概要が並んでいます。重くなるようだったら一部の記事にするなどしたいです。</p>
+<p>そして検索窓を使うと、記事を検索して絞り込むことができます。</p>
+<p>検索機能については一般的な検索と同様、スペースを区切ることで複数の単語を使えます。</p>
+<p>概要をクリックすることで、記事の単体表示画面になります。</p>
+<p>単体表示画面には専用の URL がありますが、検索画面ではずっと同じ URL なので、特定の記事をブックマークしたい場合は単体表示画面を使ったほうがいいと思います。</p>
+</div>
+<div class="p-3 m-3 border-t border-zinc-800">
+<div class="flex flex-wrap justify-end">
+<p class=m-2>タグ:</p>
+<p class=m-2>運営</p>
+<p class=m-2>info</p>
+</div>
+<p class="text-right m-2">2022-08-28</p>
+</div>
+</article>
+</main>
+<footer class="w-full shrink-0 h-1/4 flex flex-col justify-center items-center bg-gradient-to-br from-stone-700 to-neutral-800 text-white">
+<address class="p-8 pb-2">&copy; mi.ki.ri.hassha.p@gmail.com</address>
+<p class="p-8 pt-2">
+<a href=http://example.org/index.xml> RSS </a>
+</p>
+</footer>
+</div>
+</body>
+</html>
