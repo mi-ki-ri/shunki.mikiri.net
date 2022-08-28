@@ -7,7 +7,7 @@
   <header
     class="shrink-0 w-full h-1/4 flex flex-col justify-center items-center bg-gradient-to-br from-stone-700 to-neutral-800 text-white"
   >
-    <h1 class="title">
+    <h1 class="title truncate">
       <a href="{{$.Site.BaseURL}}">{{ .Site.Title }}</a>
     </h1>
   </header>
@@ -20,7 +20,7 @@
       </h2>
       <div class="p-3 m-3">{{ .Content }}</div>
 
-      <div class="p-3 m-3 border-t border-zinc-800">
+      <div class="p-3 m-3 border-t border-zinc-800 truncate">
         <div class="flex flex-wrap justify-end">
           <p class="m-2">タグ:</p>
           {{- range $termName := .Params.tags }}
