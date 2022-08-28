@@ -32,7 +32,7 @@
             class=" text-center text-xl border-b border-zinc-800 truncate"
             v-text="post.title"
           ></h3>
-          <p class="text-sm p-2" v-text="post.summary"></p>
+          <p class="text-sm p-2" v-text="((post.summary) + '...')"></p>
 
           <div class="flex truncate flex-wrap justify-end text-sm text-right text-zinc-500">
             <div
